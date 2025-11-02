@@ -1,0 +1,129 @@
+#!/bin/sh
+#
+# Instance (likely Ubuntu) Setup Configuration File
+# Copy this file to instance.conf and customize for your needs
+#
+
+################################################################################
+# SOFTWARE INSTALL (required)
+################################################################################
+
+# Always installed: curl wget git vim htop net-tools ncdu jq tmux tree unzip ufw
+#                   fail2ban sysstat vnstat unattended-upgrades apt-listchanges
+#                   msmtp msmtp-mta mailutils wireguard
+
+# Additional packages to install (space-separated list)
+ADDITIONAL_PACKAGES=""
+
+################################################################################
+# SYSTEM SETUP (required)
+################################################################################
+
+# [*] Hostname for this instance
+HOSTNAME=""
+
+# [*] Timezone (see /usr/share/zoneinfo for valid values)
+TIMEZONE="UTC"
+
+# Swap file size in megabytes (0 to disable)
+SWAP_SIZE_MB=2048
+SWAPPINESS=10  # Swappiness value (0-100)
+
+# [*] New non-root user configuration
+NEW_USER=""
+NEW_USER_PASSWORD=""  # Change this!
+NEW_USER_GROUPS="sudo"  # Comma-separated list of additional groups
+
+# [*] SSH public key for new user (copy and paste public key into this variable)
+SSH_PUBLIC_KEY=""
+
+# Log rotation settings file location
+LOG_ROTATE_CONFIG="/etc/logrotate.d/$HOSTNAME-setup"
+
+# Log rotation settings
+LOG_ROTATE_DAYS=7     # Number of days to keep logs
+LOG_ROTATE_COUNT=4    # Number of rotated logs to keep
+
+# Log file location
+LOG_FILE="/var/log/$HOSTNAME-setup.log"
+
+# Disable snapd installation (true/false)
+DISABLE_SNAPD=true
+
+################################################################################
+# SSH HARDENING (required)
+################################################################################
+
+# [*] Non-standard SSH port (1024-65535)
+SSH_PORT=22222
+
+################################################################################
+# FIREWALL (required)
+################################################################################
+
+# WireGuard port (if used)
+WIREGUARD_PORT=51820
+
+# Additional ports to allow (space-separated list)
+# Can specify protocol: "80/tcp 443/tcp 53/udp"
+# Or without protocol (allows both TCP/UDP): "80 443"
+# Example: "80 443 8080"
+ADDITIONAL_PORTS="80 443"
+
+################################################################################
+# SECURITY SOFTWARE (required)
+################################################################################
+
+# Enable fail2ban
+ENABLE_FAIL2BAN=true
+
+# Fail2ban configuration file location
+FAIL2BAN_CONFIG="/etc/fail2ban/jail.local"
+
+# Fail2ban filter for SSH DDoS attacks
+FAIL2BAN_FILTER_SSHD_DDOS="/etc/fail2ban/filter.d/sshd-ddos.conf"
+
+# Fail2ban log file location
+FAIL2BAN_LOG="/var/log/fail2ban.log"
+
+# Fail2ban settings
+FAIL2BAN_BANTIME=3600      # Ban time in seconds (1 hour)
+FAIL2BAN_FINDTIME=600      # Time window in seconds (10 minutes)
+FAIL2BAN_MAXRETRY=5        # Maximum retry attempts
+
+################################################################################
+# UNATTENDED UPDATES (optional, disabled by default)
+################################################################################
+
+# Enable automatic security updates
+ENABLE_UNATTENDED_UPDATES=false
+
+# Unattended upgrades configuration file location
+UNATTENDED_UPGRADES_CONFIG="/etc/apt/apt.conf.d/50unattended-upgrades"
+
+# APT periodic configuration file location
+APT_PERIODIC_CONFIG="/etc/apt/apt.conf.d/20auto-upgrades"
+
+# Email for update notifications
+UNATTENDED_UPDATES_EMAIL=""
+
+################################################################################
+# NOTIFICATIONS (optional)
+################################################################################
+
+# Enable email notifications
+ENABLE_EMAIL_NOTIFICATIONS=false
+
+# Email notifications configuration
+MSMTP_CONFIG="/etc/msmtprc"
+
+# MSMTP log file location
+MSMTP_LOG="/var/log/msmtp.log"
+
+# Email configuration
+NOTIFICATION_EMAIL=""           # Email address to send notifications to
+SMTP_HOST=""                    # SMTP server hostname
+SMTP_PORT=587                   # SMTP port (usually 587 for TLS)
+SMTP_USER=""                    # SMTP username
+SMTP_PASSWORD=""                # SMTP password
+SMTP_FROM=""                    # From email address
