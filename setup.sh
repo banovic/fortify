@@ -1,9 +1,12 @@
 #!/bin/sh
 #
 # Ubuntu Instance Setup Script
-# Configures a fresh Ubuntu instance with security hardening and common tools
-# Must be run as root
-# This script is idempotent and can be safely run multiple times
+# Copyright (c) 2025 Branislav Anovic
+# Licensed under the MIT License
+#
+# Configures a fresh Ubuntu instance with security hardening and common tools.
+# Must be run as root.
+# This script is idempotent and can be safely run multiple times.
 #
 
 set -e  # Exit on error
