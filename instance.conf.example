@@ -127,3 +127,10 @@ SMTP_PORT=587                   # SMTP port (usually 587 for TLS)
 SMTP_USER=""                    # SMTP username
 SMTP_PASSWORD=""                # SMTP password
 SMTP_FROM=""                    # From email address
+
+################################################################################
+# CADDY WEB SERVER (optional)
+################################################################################
+
+# Enable Caddy installation
+INSTALL_CADDY=true
