@@ -507,7 +507,7 @@ EOF
     fi
 
     log_info "[ssh] Restarting SSH service..."
-    systemctl restart sshd || systemctl restart ssh
+    systemctl restart sshd > /dev/null 2>&1 || systemctl restart ssh > /dev/null 2>&1
 
     if systemctl is-active --quiet sshd || systemctl is-active --quiet ssh; then
         log_success "[ssh] SSH service restarted successfully"
