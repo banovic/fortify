@@ -276,7 +276,7 @@ disable_snapd() {
 }
 
 install_caddy() {
-    if ! command -v caddy > /dev/null 2>&1; then
+    if command -v caddy > /dev/null 2>&1; then
         log_info "[caddy] Caddy is already installed, skipping..."
         return 0
     fi
