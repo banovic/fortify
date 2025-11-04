@@ -6,7 +6,7 @@
 #
 # Configures a fresh Ubuntu instance with security hardening and common tools.
 # Must be run as root.
-# This script is idempotent and can be safely run multiple times.
+# This script is idempotent and can be safely run multiple times (with same config file, or with gradually more specific configurations).
 #
 
 set -e  # Exit on error
